@@ -13,6 +13,9 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 
@@ -37,6 +40,7 @@ import com.revature.salesforce.beans.SalesforceTraineeResponse;
  *
  */
 @Repository
+@PropertySource("classpath:application.properties")
 public class SalesforceDAO {
 
 	private static final Logger log = Logger.getLogger(SalesforceDAO.class);
@@ -44,12 +48,12 @@ public class SalesforceDAO {
 	@Autowired
 	private SalesforceTransformerToCaliber transformer;
 
-	@Value("#{systemEnvironment['CALIBER_DEV_MODE']}")
+	@Value("${caliber.dev.mode}")
 	private boolean debug;
 
-	@Value("#{systemEnvironment['SALESFORCE_INSTANCE_URL']}")
+	@Value("${salesforce.instance.url}")
 	private String salesforceInstanceUrl;
-	@Value("/services/data/v39.0/query/")
+	@Value("${salesforce.api.url}")
 	private String salesforceApiUrl;
 
 	//////////// SOQL - Salesforce Object Query Language //////////////

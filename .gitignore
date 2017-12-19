@@ -20,6 +20,8 @@
 **/.recommenders/**
 **/Servers
 **/.springBeans
+**/application.properties
+**/application.yml
 
 #IDEA
 **/.idea/

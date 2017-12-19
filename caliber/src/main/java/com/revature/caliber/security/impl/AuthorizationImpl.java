@@ -24,6 +24,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -49,11 +50,12 @@ import com.revature.caliber.security.models.SalesforceUser;
  * Created by louislopez on 1/18/17.
  */
 @Controller
+@PropertySource("classpath:application.properties")
 public class AuthorizationImpl extends AbstractSalesforceSecurityHelper implements Authorization {
 	@Value("/caliber/")
 	private String forwardUrl;
 	private static final Logger log = Logger.getLogger(AuthorizationImpl.class);
-	@Value("#{systemEnvironment['CALIBER_DEV_MODE']}")
+	@Value("${caliber.dev.mode}")
 	private boolean debug;
 	private static final String DEBUG_USER_LOGIN = "patrick.walsh@revature.com";
 	private static final String REDIRECT = "redirect:";

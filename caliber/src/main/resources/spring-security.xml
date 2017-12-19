@@ -12,7 +12,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 		<security:form-login login-page="/" />
 
 		<!-- enable SSL -->
-   		<security:intercept-url pattern="/**" requires-channel="https" />
+   		<!-- <security:intercept-url pattern="/**" requires-channel="https" />-->
 
 		<security:csrf disabled="true" />
 		<security:logout invalidate-session="true"

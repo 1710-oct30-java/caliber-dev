@@ -15,6 +15,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
@@ -31,10 +32,11 @@ import com.revature.caliber.security.models.SalesforceUser;
  * The type Boot controller.
  */
 @Controller
+@PropertySource("classpath:application.yml")
 public class BootController extends AbstractSalesforceSecurityHelper {
     private static final Logger log = Logger.getLogger(BootController.class);
     private static final String INDEX = "index";
-    @Value("#{systemEnvironment['CALIBER_DEV_MODE']}")
+    @Value("${caliber.dev.mode}")
     private boolean debug;
     private static final String DEBUG_USER_LOGIN = "patrick.walsh@revature.com";
     
